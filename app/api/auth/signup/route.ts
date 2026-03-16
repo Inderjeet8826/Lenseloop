@@ -1,7 +1,9 @@
+export const dynamic = "force-dynamic";
 import { connectDB } from "@/src/lib/mongodb";
 import User from "@/src/models/User";
 import bcrypt from "bcryptjs";
 import { NextResponse } from "next/server";
+
 
 export async function POST(req: Request) {
   await connectDB();
