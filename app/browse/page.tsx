@@ -1,3 +1,4 @@
+export const dynamic = "force-dynamic";
 import { connectDB } from "@/src/lib/mongodb";
 import Listing from "@/src/models/Listing";
 import Link from "next/link";
