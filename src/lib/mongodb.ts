@@ -1,9 +1,9 @@
 import mongoose, { Mongoose } from "mongoose";
 
-const MONGODB_URI = process.env.MONGODB_URI as string;
+const MONGODB_URI = process.env.DATABASE_URL as string;
 
 if (!MONGODB_URI) {
-  throw new Error("MONGODB_URI is not defined");
+  throw new Error("DATABASE_URL is not defined");
 }
 
 declare global {
