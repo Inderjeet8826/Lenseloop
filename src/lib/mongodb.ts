@@ -1,11 +1,5 @@
 import mongoose, { Mongoose } from "mongoose";
 
-const MONGODB_URI = process.env.DATABASE_URL as string;
-
-if (!MONGODB_URI) {
-  throw new Error("DATABASE_URL is not defined");
-}
-
 declare global {
   var mongoose: {
     conn: Mongoose | null;
@@ -20,6 +14,11 @@ if (!cached) {
 }
 
 export async function connectDB(): Promise<Mongoose> {
+  const MONGODB_URI = process.env.DATABASE_URL as string;
+  if (!MONGODB_URI) {
+    throw new Error("DATABASE_URL is not defined");
+  }
+
   if (cached.conn) return cached.conn;
 
   if (!cached.promise) {
