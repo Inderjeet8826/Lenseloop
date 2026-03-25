@@ -14,9 +14,10 @@ if (!cached) {
 }
 
 export async function connectDB(): Promise<Mongoose> {
-  const MONGODB_URI = process.env.DATABASE_URL as string;
+  const MONGODB_URI = (process.env.DATABASE_URL ||
+    process.env.MONGODB_URI) as string;
   if (!MONGODB_URI) {
-    throw new Error("DATABASE_URL is not defined");
+    throw new Error("DATABASE_URL (or MONGODB_URI) is not defined");
   }
 
   if (cached.conn) return cached.conn;
