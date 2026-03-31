@@ -21,11 +21,13 @@ export default function Signup() {
       body: JSON.stringify(form),
     });
 
+    const data = await res.json();
+
     if (res.ok) {
       alert("Signup successful");
       router.push("/login");
     } else {
-      alert("Error signing up");
+      alert(data.error || "Error signing up");
     }
   };
 

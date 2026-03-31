@@ -9,6 +9,12 @@ export async function POST(req: Request) {
   await connectDB();
 
   const { name, email, password } = await req.json();
+  if (!name || !email || !password) {
+    return NextResponse.json(
+      { error: "Name, email, and password are required" },
+      { status: 400 }
+    );
+  }
 
   const existingUser = await User.findOne({ email });
 
