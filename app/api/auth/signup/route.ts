@@ -33,5 +33,15 @@ export async function POST(req: Request) {
     password: hashedPassword,
   });
 
-  return NextResponse.json(user);
+  return NextResponse.json(
+    {
+      success: true,
+      user: {
+        id: user._id,
+        name: user.name,
+        email: user.email,
+      },
+    },
+    { status: 201 }
+  );
 }
